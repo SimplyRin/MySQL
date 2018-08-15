@@ -105,7 +105,7 @@ public class MySQL {
 			this.statement = statement;
 			this.table = table;
 			try {
-				this.statement.executeUpdate("create table if not exists " + this.table + " (id int unique, _key varchar(2048), value varchar(2048)) charset=utf8;");
+				this.statement.executeUpdate("create table if not exists " + this.table + " (id int unique, _key varchar(4098), value varchar(4098)) charset=utf8;");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
