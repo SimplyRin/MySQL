@@ -4,17 +4,31 @@
 
   <groupId>net.simplyrin.mysql</groupId>
   <artifactId>MySQL</artifactId>
-  <version>1.0</version>
+  <version>1.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>MySQL</name>
   <url>http://maven.apache.org</url>
+
+  <distributionManagement>
+    <repository>
+      <id>net.simplyrin.mysql</id>
+      <name>MySQL</name>
+      <url>file://${project.build.directory}/mvn-repo</url>
+    </repository>
+  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
