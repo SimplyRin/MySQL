@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by SimplyRin on 2018/08/14.
@@ -111,6 +114,15 @@ public class MySQL {
 			}
 		}
 
+		public boolean set(String key, List<String> list) {
+			String object = "";
+			for(String content : list) {
+				object += content + ",&%$%&,";
+			}
+			object = object.substring(0, object.length() - ",&%$%&,".length());
+			return this.set(key, object);
+		}
+
 		public boolean set(String key, String object) {
 			int result = 0;
 
@@ -164,6 +176,15 @@ public class MySQL {
 				e.printStackTrace();
 			}
 			return null;
+		}
+
+		public List<String> getList(String key) {
+			String[] result = this.get(key).split(Pattern.quote(",&%$%&,"));
+			List<String> list = new ArrayList<>();
+			for(String content : result) {
+				list.add(content);
+			}
+			return list;
 		}
 
 	}
